@@ -9,3 +9,13 @@ function getComputerChoice() {
     }
 }
 
+function getPlayerChoice() {
+    let playerChoice = prompt("Rock, Paper, or Scissors?");
+    playerChoice = playerChoice.toLowerCase().trim();
+    if (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors") {
+        console.log("Invalid choice! Please try again.");
+        return getPlayerChoice();
+    } else {
+        return playerChoice;
+    }
+}
