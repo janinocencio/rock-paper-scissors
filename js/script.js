@@ -45,7 +45,6 @@ function playRound(playerSelection,computerSelection){
             computerSelection = getComputerChoice();
             playerSelection = getPlayerChoice();
             return playRound(playerSelection,computerSelection);
-            break;
     }
 }
 
