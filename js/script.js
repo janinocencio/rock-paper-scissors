@@ -48,3 +48,34 @@ function playRound(playerSelection,computerSelection){
             break;
     }
 }
+
+
+function game() {
+    let scorePlayer = 0
+    let scoreComputer = 0
+    for (let i=0; i<5; i++) {
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerChoice();
+        let stringWinLose = playRound(playerSelection,computerSelection);
+        console.log(stringWinLose);
+        console.log("Score Update:");
+        if (stringWinLose.slice(4,7) === "Win"){
+            scorePlayer++;
+            console.log("Player: " + scorePlayer);
+            console.log("Computer: " + scoreComputer);
+        } else {
+            scoreComputer++;
+            console.log("Player: " + scorePlayer);
+            console.log("Computer: " + scoreComputer);
+        }
+        if ((scorePlayer === 3) || (scoreComputer === 3)){
+            break;
+        }
+    }
+    console.log("Game over!")
+    if (scorePlayer > scoreComputer){
+        console.log("Player Wins!");
+    } else {
+        console.log("Computer Wins!")
+    }
+}
