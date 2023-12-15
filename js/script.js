@@ -79,3 +79,7 @@ function game() {
         console.log("Computer Wins!")
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    game();
+});
