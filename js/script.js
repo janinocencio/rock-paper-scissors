@@ -10,36 +10,36 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
-    let playerChoice = prompt("Rock, Paper, or Scissors?");
-    playerChoice = playerChoice.toLowerCase().trim();
-    if (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors") {
-        console.log("Invalid choice! Please try again.");
-        return getPlayerChoice();
-    } else {
-        return playerChoice;
-    }
+    const playerButtons = document.querySelectorAll('.rps-box-player > button');
+    playerButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            let playerChoice = event.target;
+            switch (true){
+                case playerChoice.id === "rock-player":
+                    return "rock";
+                case playerChoice.id ==="paper-player":
+                    return "paper";
+                case playerChoice.id ==="scissors-player":
+                    return "scissors";
+            }
+        });
+    });
 }
 
 function playRound(playerSelection,computerSelection){
     switch(true) {
         case playerSelection==="rock" && computerSelection==="paper":
             return "You Lose! Paper beats Rock!";
-            break;
         case playerSelection==="rock" && computerSelection==="scissors":
             return "You Win! Rock beats Scissors!";
-            break;
         case playerSelection==="scissors" && computerSelection==="rock":
             return "You Lose! Rock beats Scissors!";
-            break;
         case playerSelection==="scissors" && computerSelection==="paper":
             return "You Win! Scissors beats Paper!";
-            break;
         case playerSelection==="paper" && computerSelection==="scissors":
             return "You Lose! Scissors beats Paper!";
-            break;
         case playerSelection==="paper" && computerSelection==="rock":
             return "You Win! Paper beats Rock!";
-            break;
         case playerSelection===computerSelection:
             console.log("It's a tie! Try again!");
             computerSelection = getComputerChoice();
@@ -79,6 +79,6 @@ function game() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    game();
-});
+
+const btnStart = document.querySelector('.btn-start');
+btnStart.addEventListener('click', game); 
