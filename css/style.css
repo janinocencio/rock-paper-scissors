@@ -1,0 +1,77 @@
+/* CSS Reset from joshwcomeau */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, button, textarea, select {
+    font: inherit;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+  #root, #__next {
+    isolation: isolate;
+  }
+  /**************************/
+
+html {
+    font-size: 12px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    height: 10vh;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+li {
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+.footer > .copyright {
+    font-size: 1.25rem;
+}
