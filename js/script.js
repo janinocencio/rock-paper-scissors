@@ -57,13 +57,11 @@ async function game() {
         let computerSelection = getComputerChoice();
         let playerSelection = await getPlayerChoice();
         let stringWinLose = playRound(playerSelection,computerSelection);
-        console.log(stringWinLose);
         
         while (stringWinLose.slice(7,10) === "tie") {
             computerSelection = getComputerChoice();
             playerSelection = await getPlayerChoice();
             stringWinLose = playRound(playerSelection,computerSelection);
-            console.log(stringWinLose);
         }
 
         if (stringWinLose.slice(4,7) === "Win"){
@@ -77,11 +75,14 @@ async function game() {
             break;
         }
     };
-    console.log("Game over!")
+    const startDiv = document.querySelector('.start')
+    const winnerGame = document.createElement('p')
     if (scorePlayer > scoreComputer){
-        console.log("Player Wins!");
+        winnerGame.textContent = "Game Over! Player Wins";
+        startDiv.insertBefore(winnerGame,btnStart)
     } else {
-        console.log("Computer Wins!")
+        winnerGame.textContent = "Game Over! Computer Wins";
+        startDiv.insertBefore(winnerGame,btnStart)
     };
 };
 
