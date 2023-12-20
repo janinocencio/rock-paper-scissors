@@ -10,6 +10,8 @@ function getComputerChoice() {
 };
 
 function getPlayerChoice() {
+    let playerChoiceText = document.querySelector('.choice-player');
+
     return new Promise(resolve => {
         const playerButtons = document.querySelectorAll('.rps-box-player > button');
         playerButtons.forEach(function(button) {
@@ -17,11 +19,17 @@ function getPlayerChoice() {
                 let playerChoice = event.target;
                 switch (true){
                     case playerChoice.id === "rock-player":
+                        playerChoiceText.textContent = "Player plays ROCK!";
                         resolve("rock");
+                        break;
                     case playerChoice.id ==="paper-player":
+                        playerChoiceText.textContent = "Player plays PAPER!";
                         resolve("paper");
+                        break;
                     case playerChoice.id ==="scissors-player":
+                        playerChoiceText.textContent = "Player plays SCISSORS!";
                         resolve("scissors");
+                        break;
                 };
             });
         });
@@ -29,7 +37,7 @@ function getPlayerChoice() {
 };
 
 function playRound(playerSelection,computerSelection){
-    const winnerRound = document.querySelector('.mid-winner > h4')
+    const winnerRound = document.querySelector('.mid-winner > h4');
     switch(true) {
         case playerSelection==="rock" && computerSelection==="paper":
             return winnerRound.textContent = "You Lose! Paper beats Rock!";
