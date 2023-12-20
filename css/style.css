@@ -39,12 +39,12 @@ html {
     display: flex;
     align-items: center;
     justify-content:space-between;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 ul {
@@ -54,7 +54,7 @@ ul {
 
 li {
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .content {
@@ -67,7 +67,7 @@ li {
 }
 
 .content > .game-name {
-    height: 20%;
+    height: 25%;
 }
 
 .content h1 {
@@ -87,9 +87,12 @@ li {
     align-items: center;
     gap: 8rem;
     font-size: 1.25rem;
-    height: 80%;
+    height: 75%;
 }
 
+button {
+
+}
 
 
 
