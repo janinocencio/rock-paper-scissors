@@ -29,21 +29,22 @@ function getPlayerChoice() {
 };
 
 function playRound(playerSelection,computerSelection){
+    const winnerRound = document.querySelector('.mid-winner > h4')
     switch(true) {
         case playerSelection==="rock" && computerSelection==="paper":
-            return "You Lose! Paper beats Rock!";
+            return winnerRound.textContent = "You Lose! Paper beats Rock!";
         case playerSelection==="rock" && computerSelection==="scissors":
-            return "You Win! Rock beats Scissors!";
+            return winnerRound.textContent = "You Win! Rock beats Scissors!";
         case playerSelection==="scissors" && computerSelection==="rock":
-            return "You Lose! Rock beats Scissors!";
+            return winnerRound.textContent = "You Lose! Rock beats Scissors!";
         case playerSelection==="scissors" && computerSelection==="paper":
-            return "You Win! Scissors beats Paper!";
+            return winnerRound.textContent = "You Win! Scissors beats Paper!";
         case playerSelection==="paper" && computerSelection==="scissors":
-            return "You Lose! Scissors beats Paper!";
+            return winnerRound.textContent = "You Lose! Scissors beats Paper!";
         case playerSelection==="paper" && computerSelection==="rock":
-            return "You Win! Paper beats Rock!";
+            return winnerRound.textContent = "You Win! Paper beats Rock!";
         case playerSelection===computerSelection:
-            return "It's a tie! Try again!";
+            return winnerRound.textContent = "It's a tie! Try again!";
     };
 };
 
@@ -88,4 +89,7 @@ async function game() {
 
 
 const btnStart = document.querySelector('.btn-start');
-btnStart.addEventListener('click', game); 
+btnStart.addEventListener('click', () => {
+    game();
+    btnStart.disabled = true;
+});
