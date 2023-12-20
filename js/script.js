@@ -28,7 +28,7 @@ function getPlayerChoice() {
     });
 };
 
-async function playRound(playerSelection,computerSelection){
+function playRound(playerSelection,computerSelection){
     switch(true) {
         case playerSelection==="rock" && computerSelection==="paper":
             return "You Lose! Paper beats Rock!";
@@ -43,10 +43,7 @@ async function playRound(playerSelection,computerSelection){
         case playerSelection==="paper" && computerSelection==="rock":
             return "You Win! Paper beats Rock!";
         case playerSelection===computerSelection:
-            console.log("It's a tie! Try again!");
-            computerSelection = getComputerChoice();
-            playerSelection = getPlayerChoice();
-            return playRound(playerSelection,computerSelection);
+            return "It's a tie! Try again!";
     };
 };
 
@@ -59,12 +56,20 @@ async function game() {
         let playerSelection = await getPlayerChoice();
         let stringWinLose = playRound(playerSelection,computerSelection);
         console.log(stringWinLose);
+        
+        while (stringWinLose.slice(7,10) === "tie") {
+            computerSelection = getComputerChoice();
+            playerSelection = await getPlayerChoice();
+            stringWinLose = playRound(playerSelection,computerSelection);
+            console.log(stringWinLose);
+        }
+
         console.log("Score Update:");
         if (stringWinLose.slice(4,7) === "Win"){
             scorePlayer++;
             console.log("Player: " + scorePlayer);
             console.log("Computer: " + scoreComputer);
-        } else {
+        } else if (stringWinLose.slice(4,7) === "Los") {
             scoreComputer++;
             console.log("Player: " + scorePlayer);
             console.log("Computer: " + scoreComputer);
