@@ -50,6 +50,7 @@ function playRound(playerSelection,computerSelection){
 
 
 async function game() {
+    const scoreCurrent = document.querySelector('.game-name > h4')
     let scorePlayer = 0
     let scoreComputer = 0
     for (let i=0; i<5; i++) {
@@ -65,15 +66,12 @@ async function game() {
             console.log(stringWinLose);
         }
 
-        console.log("Score Update:");
         if (stringWinLose.slice(4,7) === "Win"){
             scorePlayer++;
-            console.log("Player: " + scorePlayer);
-            console.log("Computer: " + scoreComputer);
+            scoreCurrent.textContent = "Player: " + scorePlayer + " | Computer: " + scoreComputer;
         } else if (stringWinLose.slice(4,7) === "Los") {
             scoreComputer++;
-            console.log("Player: " + scorePlayer);
-            console.log("Computer: " + scoreComputer);
+            scoreCurrent.textContent = "Player: " + scorePlayer + " | Computer: " + scoreComputer;
         }
         if ((scorePlayer === 3) || (scoreComputer === 3)){
             break;
