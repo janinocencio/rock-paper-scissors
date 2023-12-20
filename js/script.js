@@ -1,17 +1,20 @@
 function getComputerChoice() {
+    let computerChoiceText = document.querySelector('.choice-computer');
     let computerChoice = Math.floor(Math.random()*3);
     if (computerChoice === 0) {
+        computerChoiceText.textContent = "Computer plays ROCK!"
         return "rock";
     } else if (computerChoice === 1) {
+        computerChoiceText.textContent = "Computer plays PAPER!"
         return "paper";
     } else if (computerChoice === 2) {
+        computerChoiceText.textContent = "Computer plays SCISSORS!"
         return "scissors";
     }
 };
 
 function getPlayerChoice() {
     let playerChoiceText = document.querySelector('.choice-player');
-
     return new Promise(resolve => {
         const playerButtons = document.querySelectorAll('.rps-box-player > button');
         playerButtons.forEach(function(button) {
@@ -62,13 +65,13 @@ async function game() {
     let scorePlayer = 0
     let scoreComputer = 0
     for (let i=0; i<5; i++) {
-        let computerSelection = getComputerChoice();
         let playerSelection = await getPlayerChoice();
+        let computerSelection = getComputerChoice();
         let stringWinLose = playRound(playerSelection,computerSelection);
         
-        while (stringWinLose.slice(7,10) === "tie") {
-            computerSelection = getComputerChoice();
+        while (stringWinLose.slice(7,10) === "tie") {           
             playerSelection = await getPlayerChoice();
+            computerSelection = getComputerChoice();
             stringWinLose = playRound(playerSelection,computerSelection);
         }
 
