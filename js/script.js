@@ -7,26 +7,28 @@ function getComputerChoice() {
     } else if (computerChoice === 2) {
         return "scissors";
     }
-}
+};
 
 function getPlayerChoice() {
-    const playerButtons = document.querySelectorAll('.rps-box-player > button');
-    playerButtons.forEach(function(button) {
-        button.addEventListener('click', function(event) {
-            let playerChoice = event.target;
-            switch (true){
-                case playerChoice.id === "rock-player":
-                    return "rock";
-                case playerChoice.id ==="paper-player":
-                    return "paper";
-                case playerChoice.id ==="scissors-player":
-                    return "scissors";
-            }
+    return new Promise(resolve => {
+        const playerButtons = document.querySelectorAll('.rps-box-player > button');
+        playerButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                let playerChoice = event.target;
+                switch (true){
+                    case playerChoice.id === "rock-player":
+                        resolve("rock");
+                    case playerChoice.id ==="paper-player":
+                        resolve("paper");
+                    case playerChoice.id ==="scissors-player":
+                        resolve("scissors");
+                };
+            });
         });
     });
-}
+};
 
-function playRound(playerSelection,computerSelection){
+async function playRound(playerSelection,computerSelection){
     switch(true) {
         case playerSelection==="rock" && computerSelection==="paper":
             return "You Lose! Paper beats Rock!";
@@ -45,16 +47,16 @@ function playRound(playerSelection,computerSelection){
             computerSelection = getComputerChoice();
             playerSelection = getPlayerChoice();
             return playRound(playerSelection,computerSelection);
-    }
-}
+    };
+};
 
 
-function game() {
+async function game() {
     let scorePlayer = 0
     let scoreComputer = 0
     for (let i=0; i<5; i++) {
         let computerSelection = getComputerChoice();
-        let playerSelection = getPlayerChoice();
+        let playerSelection = await getPlayerChoice();
         let stringWinLose = playRound(playerSelection,computerSelection);
         console.log(stringWinLose);
         console.log("Score Update:");
@@ -70,14 +72,14 @@ function game() {
         if ((scorePlayer === 3) || (scoreComputer === 3)){
             break;
         }
-    }
+    };
     console.log("Game over!")
     if (scorePlayer > scoreComputer){
         console.log("Player Wins!");
     } else {
         console.log("Computer Wins!")
-    }
-}
+    };
+};
 
 
 const btnStart = document.querySelector('.btn-start');
